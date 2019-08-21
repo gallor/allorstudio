@@ -1,21 +1,32 @@
 import React from "react"
-import { Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
+import Footer from '../components/Footer';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
+import Layout from "../layouts/Layout";
 import SEO from "../components/seo"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <HomePageImage />
+    <Footer />
   </Layout>
 )
 
 export default IndexPage
+
+export const HomePageImage = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      home: file(relativePath: { eq: "headshot-in-front.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 1200) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+  return <Img className='fullScreen' fluid={data.home.childImageSharp.fluid} style={{marginLeft: '15%', minHeight: '54rem' }} />
+};

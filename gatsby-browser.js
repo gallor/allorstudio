@@ -5,3 +5,7 @@
  */
 
 // You can delete this file if you're not using it
+
+import 'typeface-josefin-sans';
+import "./src/styles/layout.css";
+import "./src/styles/styles.css";

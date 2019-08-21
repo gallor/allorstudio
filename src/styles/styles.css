@@ -1,0 +1,19 @@
+p {
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.mediaWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+.mediaWrapper .gatsby-image-wrapper {
+  width: 48%;
+  margin-bottom: 4rem;
+}
