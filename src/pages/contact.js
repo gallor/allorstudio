@@ -8,7 +8,85 @@ import PageLayout from '../layouts/PageLayout';
 import SEO from "../components/seo"
 
 const StyledForm = styled.form`
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  padding-bottom: 5rem;
 
+  input, textarea, button {
+    margin: .5rem 0;
+    height: 4rem;
+    padding: 0 .5rem;
+    border: #dfdfdf solid 1px;
+
+    &:focus {
+      outline: none;
+      background-color: #f9f9f9;
+      border-color: #dfdfdf;
+    }
+  }
+  
+  button {
+    padding: 1.5rem;
+    height: auto;
+
+    &:focus {
+      background-color: #fff;
+      border-color: #0f0f0f;
+    }
+
+    &:active {
+      background-color: #f9f9f9;
+      border-color: #0f0f0f;
+    }
+  }
+
+  textarea {
+    padding: .5rem;
+    resize: none;
+    height: 15rem;
+  }
+
+  legend {
+    margin-bottom: 1rem;
+  }
+  .labelTitle {
+    display: block;
+  }
+  .flexWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .col-6 {
+    width: 49%;
+  }
+  .col-3 {
+    width: 32%;
+  }
+  .col-9 {
+    width: 66%;
+  }
+  .col-12, .fullWidth {
+    width: 100%;
+  }
+
+  .inputWrapper {
+    margin-bottom: 1rem;
+  }
+
+  .buttonWrapper {
+    position: relative;
+  }
+
+  .putLeft {
+    position: absolute;
+    right: 10rem;
+  }
+
+  .putRight {
+    position: absolute;
+    right:0;
+  }
 `;
 
 const AboutPage = (props) => (
@@ -17,22 +95,30 @@ const AboutPage = (props) => (
       <SEO title="Contact Jennifer Allor" />
       <AboutImage />
       <StyledForm>
-        <fieldset>
-          <legend>Name*</legend>
-          <label>First Name <input name="fname" type="text" maxlength="30" /></label> 
-          <label>Last Name <input name="lname" type="text" maxlength="30" /></label> 
+        <fieldset className="inputWrapper">
+          <legend className="bold">Name*</legend>
+          <div className="flexWrapper">
+            <label className="col-6"><span className="labelTitle">First Name</span><input name="fname" type="text" maxlength="30" className="fullWidth" required="true" /></label> 
+            <label className="col-6"><span className="labelTitle">Last Name</span><input name="lname" type="text" maxlength="30" className="fullWidth" required="true" /></label> 
+          </div>
         </fieldset>
-        <div>
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email"/> 
+        <fieldset className="inputWrapper">
+          <div className="flexWrapper">
+            <label className="col-3"><span className="labelTitle">Phone</span><input name="phone" type="text" maxlength="30" className="fullWidth" /></label> 
+            <label className="col-9"><span className="labelTitle">Email</span><input name="email" type="text" maxlength="30" className="fullWidth" /></label> 
+          </div>
+        </fieldset>
+        <div className="inputWrapper">
+          <label for="subject" className="labelTitle" required="true">Subject*</label>
+          <input type="text" id="subject" name="subject" className="col-12" /> 
         </div>
-        <div>
-          <label for="subject">Subject*</label>
-          <input type="text" id="subject" name="subject"/> 
+        <div className="inputWrapper">
+          <label for="message" className="labelTitle" required="true">Message*</label>
+          <textarea type="textarea" id="message" name="message" className="col-12" /> 
         </div>
-        <div>
-          <label for="message">Message*</label>
-          <input type="textarea" id="message" name="message"/> 
+        <div class="buttonWrapper">
+          <button type="reset" className="putLeft">Clear</button>
+          <button type="submit" formmethod="post" className="putRight">Submit</button>
         </div>
       </StyledForm>
     </PageLayout>
