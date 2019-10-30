@@ -3,16 +3,23 @@ import styled from "styled-components";
 
 const StyledFooter = styled.footer`
   position: absolute;
-  bottom: 2rem;
-  left: 2rem;
+  bottom: -2rem;
+  right: 1rem;
   z-index: 2;
   font-size: 1.3rem;
   line-height: 1.3rem;
 
   a {
+    display: inline-block;
+    margin-left: .55rem;
     font-weight: bold;
-    display: block;
     margin-top: .5rem;
+  }
+
+  @media screen and (max-width: 820px) {
+    position: unset;
+    margin: 1rem;
+    text-align: right;
   }
 `;
 

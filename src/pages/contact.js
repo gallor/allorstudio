@@ -76,6 +76,18 @@ const StyledForm = styled.form`
 
   .buttonWrapper {
     position: relative;
+
+    button {
+      background-color: #dddddd;
+
+      &:active {
+        background-color: #d3d3d3;
+      } 
+
+      &:focus {
+        border-color: #dddddd;
+      }
+    }
   }
 
   .putLeft {
@@ -87,6 +99,12 @@ const StyledForm = styled.form`
     position: absolute;
     right:0;
   }
+  .hidden {
+    visibility: hidden;
+    height: 0;
+    display: block;
+  }
+
 `;
 
 const AboutPage = (props) => (
@@ -94,7 +112,8 @@ const AboutPage = (props) => (
     <PageLayout>
       <SEO title="Contact Jennifer Allor" />
       <AboutImage />
-      <StyledForm>
+      <StyledForm name="contact" method="POST" data-netlify="true" action="/contact/success" netlify-honeypot="bot-field">
+          <label class="hidden">Honeypot field. Do not fill in if human<input name="bot-field" /></label>
         <fieldset className="inputWrapper">
           <legend className="bold">Name*</legend>
           <div className="flexWrapper">

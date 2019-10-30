@@ -3,13 +3,25 @@ import PropTypes from "prop-types"
 import styled from 'styled-components';
 import Navigation from "../components/Navigation";
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 
 // TODO: Figure out how to support the expanding of the page to full height of window yet stopping at bottom
+const StyledWrapper = styled.div`
+  position: relative;
+  max-width: 130rem;
+  margin: 0 auto;
+  min-height: 55rem;
+  min-width: 80rem;
+
+  @media screen and (max-width: 820px) {
+    min-width: unset;
+  }
+`;
+
 const StyledSidebar = styled.div`
-  position: absolute;
-  left: 0;
-  width: 25%;
+  position: fixed;
+  width: 30%;
   max-width: 26rem;
   top: 0;
   bottom: 0;
@@ -18,14 +30,21 @@ const StyledSidebar = styled.div`
   background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 100%);
   z-index: 1;
   min-width: 20rem;
-`;
 
-const StyledWrapper = styled.div`
-  position: relative;
-  max-width: 130rem;
-  margin: 0 auto;
-  min-height: 54rem;
-  min-width: 80rem;
+  @media screen and (max-width: 820px) {
+    display: flex;
+    height: 12rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 100%);
+  }
+
+  @media screen and (max-width: 540px) {
+    height: 8rem;
+    position: relative;
+    padding-left: 1.5rem;
+  }
 `;
 
 const StyledMain = styled.main`
@@ -48,6 +67,13 @@ const StyledMain = styled.main`
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+  @media screen and (max-width: 820px) {
+    margin-top: 11rem;
+  }
+
+  @media screen and (max-width: 540px) {
+    margin-top: unset;
+  }
 
 `;
 const Layout = (props) => {
@@ -58,6 +84,7 @@ const Layout = (props) => {
           <Navigation path={props.path} />
       </StyledSidebar>
       <StyledMain>{props.children}</StyledMain>
+        { !props.path && <Footer /> }
     </StyledWrapper>
   )
 }
