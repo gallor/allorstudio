@@ -105,6 +105,17 @@ const StyledForm = styled.form`
     display: block;
   }
 
+  @media screen and (max-width: 540px) {
+    font-size: 1.2rem; 
+
+    input, button {
+      height: 3rem;
+      padding: 1rem;
+    }
+    button {
+      padding: 1rem 2rem;
+    }
+  }
 `;
 
 const AboutPage = (props) => (
@@ -123,8 +134,8 @@ const AboutPage = (props) => (
         </fieldset>
         <fieldset className="inputWrapper">
           <div className="flexWrapper">
-            <label className="col-3"><span className="labelTitle">Phone</span><input name="phone" type="text" maxlength="30" className="fullWidth" /></label> 
-            <label className="col-9"><span className="labelTitle">Email</span><input name="email" type="text" maxlength="30" className="fullWidth" /></label> 
+            <label className="col-3"><span className="labelTitle">Phone</span><input name="phone" type="number" maxlength="30" className="fullWidth" /></label> 
+            <label className="col-9"><span className="labelTitle">Email</span><input name="email" type="email" maxlength="30" className="fullWidth" /></label> 
           </div>
         </fieldset>
         <div className="inputWrapper">

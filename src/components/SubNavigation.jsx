@@ -17,6 +17,11 @@ const StyledNavigationSubLinksNav = styled.nav`
     margin: 3rem 0 2rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #333;
+
+    @media screen and (max-width: 480px) {
+      margin: 2rem 0;
+      font-size: 1.6rem;
+    }
   }
 
   &.sideBarNav {

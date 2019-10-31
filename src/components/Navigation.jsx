@@ -41,7 +41,7 @@ const StyledNavigationLinksDiv = styled.nav`
     &.open {
       background-color: white;
       height: 18rem;
-      bottom: -18rem;
+      bottom: -17rem;
       opacity: 1;
       filter: drop-shadow(0px 2px 4px #6c6c6c);
     }

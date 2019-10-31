@@ -11,13 +11,12 @@ const StyledSection = styled.section`
   }
   @media screen and (max-width: 820px) {
     width: unset;
-    margin-left: unset;
+    margin: 1rem;
+    padding: 1rem;
   }
 
   @media screen and (max-width: 540px) {
-    width: unset;
-    margin: 1rem;
-    padding: 0;
+  margin:unset;
   }
 `;
 

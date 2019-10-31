@@ -42,7 +42,7 @@ const StyledSidebar = styled.div`
 
   @media screen and (max-width: 540px) {
     height: 8rem;
-    position: relative;
+    position: sticky;
     padding-left: 1.5rem;
   }
 `;
@@ -72,7 +72,7 @@ const StyledMain = styled.main`
   }
 
   @media screen and (max-width: 540px) {
-    margin-top: unset;
+    margin-top: -1rem;
   }
 
 `;
