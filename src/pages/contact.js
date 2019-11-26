@@ -106,14 +106,19 @@ const StyledForm = styled.form`
   }
 
   @media screen and (max-width: 540px) {
-    font-size: 1.2rem; 
+    padding-bottom: 2rem;
+    font-size: 1rem; 
 
     input, button {
-      height: 3rem;
-      padding: 1rem;
+      height: 2.5rem;
+      padding: .75rem;
     }
     button {
-      padding: 1rem 2rem;
+      padding: .75rem 2rem;
+    }
+
+    .putLeft {
+      right: 9rem;
     }
   }
 `;

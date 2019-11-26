@@ -5,8 +5,6 @@ import Navigation from "../components/Navigation";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-
-// TODO: Figure out how to support the expanding of the page to full height of window yet stopping at bottom
 const StyledWrapper = styled.div`
   position: relative;
   max-width: 130rem;
@@ -16,6 +14,11 @@ const StyledWrapper = styled.div`
 
   @media screen and (max-width: 820px) {
     min-width: unset;
+    min-height: unset;
+  }
+
+  @media screen and (max-width: 540px) {
+    min-width: 20rem;
   }
 `;
 

@@ -21,6 +21,12 @@ const StyledFooter = styled.footer`
     margin: 1rem;
     text-align: right;
   }
+
+
+  @media screen and (max-width: 480px) {
+   font-size: 0.8rem;
+   margin: 0.5rem;
+  }
 `;
 
 const Footer = () => {

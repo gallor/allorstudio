@@ -40,10 +40,10 @@ const StyledLogo = styled.header`
     margin: 0;
 
     .title {
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
     .subtitle {
-      font-size: 1.25rem;
+      font-size: 1rem;
     }
   }
 `;

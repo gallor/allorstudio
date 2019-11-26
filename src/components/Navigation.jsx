@@ -37,11 +37,12 @@ const StyledNavigationLinksDiv = styled.nav`
     opacity: 0;
     transition: opacity .1s ease-in-out;
     left: 0;
+    font-size: 1.6rem;
 
     &.open {
       background-color: white;
       height: 18rem;
-      bottom: -17rem;
+      bottom: -16rem;
       opacity: 1;
       filter: drop-shadow(0px 2px 4px #6c6c6c);
     }
