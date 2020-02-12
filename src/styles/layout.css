@@ -10,7 +10,6 @@
 html {
   font: 67.5% 'Josefin sans', sans-serif;
   box-sizing: border-box;
-  overflow-y: scroll;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }

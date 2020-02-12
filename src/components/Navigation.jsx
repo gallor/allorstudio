@@ -55,15 +55,17 @@ const StyledNavigationLinksDiv = styled.nav`
   }
 `;
 
-const StyledMobileButton = styled.div`
+const StyledMobileButton = styled.button`
+  display: none;
   @media screen and (max-width: 540px) {
-    height: 3rem;
-    width: 25%;
+    font-family: 'Material Icons';
+    display: block;
     position: absolute;
     right: 0;
-    top: 1rem;
+    top: 0;
     z-index: 3;
-    background: center  url("./Row-32.png") no-repeat;
+    font-size: 3rem;
+    padding: 1.5rem;
   }
 `;
 
@@ -94,7 +96,7 @@ const Navigation = ({path}) => {
 
   return (
     <Fragment>
-      <StyledMobileButton onClick={toggleOpen} />
+      <StyledMobileButton className="material-icons" onClick={toggleOpen}>menu</StyledMobileButton>
       <StyledNavigationLinksDiv className={state.isOpen ? 'open' : ''}>
         <Link to="/about" className={isCurrentPage(path, 'about')} >About</Link>
         <Link to="/media" className={isCurrentPage(path, 'media')}>Media</Link>

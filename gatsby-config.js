@@ -17,6 +17,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
+          'material icons',
           'Josefin Sans'
         ],
         display: 'swap'
