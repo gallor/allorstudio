@@ -63,8 +63,10 @@ const StyledMobileButton = styled.button`
     right: 0;
     top: 0;
     z-index: 3;
-    font-size: 3rem;
-    padding: 1.5rem;
+    font-size: 2rem;
+    padding: 1rem;
+    background-color: white;
+    border: none;
   }
 `;
 
