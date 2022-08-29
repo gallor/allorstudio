@@ -1,11 +1,10 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
 import styled from 'styled-components';
 
 import Layout from "../layouts/Layout";
 import PageLayout from '../layouts/PageLayout';
-import SEO from "../components/seo"
+import Seo from "../components/seo"
+import AboutImage from '../components/AboutImage';
 
 const StyledForm = styled.form`
   margin-top: 2rem;
@@ -126,34 +125,34 @@ const StyledForm = styled.form`
 const AboutPage = (props) => (
   <Layout path={props.path}>
     <PageLayout>
-      <SEO title="Contact Jennifer Allor" />
+      <Seo title="Contact Jennifer Allor" />
       <AboutImage />
       <StyledForm name="contact" method="POST" data-netlify="true" action="/contact/success" netlify-honeypot="bot-field">
-          <label class="hidden">Honeypot field. Do not fill in if human<input name="bot-field" /></label>
+          <label className="hidden">Honeypot field. Do not fill in if human<input name="bot-field" /></label>
         <fieldset className="inputWrapper">
           <legend className="bold">Name*</legend>
           <div className="flexWrapper">
-            <label className="col-6"><span className="labelTitle">First Name</span><input name="fname" type="text" maxlength="30" className="fullWidth" required="true" /></label> 
-            <label className="col-6"><span className="labelTitle">Last Name</span><input name="lname" type="text" maxlength="30" className="fullWidth" required="true" /></label> 
+            <label className="col-6"><span className="labelTitle">First Name</span><input name="fname" type="text" maxLength="30" className="fullWidth" required={true} /></label> 
+            <label className="col-6"><span className="labelTitle">Last Name</span><input name="lname" type="text" maxLength="30" className="fullWidth" required={true} /></label> 
           </div>
         </fieldset>
         <fieldset className="inputWrapper">
           <div className="flexWrapper">
-            <label className="col-3"><span className="labelTitle">Phone</span><input name="phone" type="number" maxlength="30" className="fullWidth" /></label> 
-            <label className="col-9"><span className="labelTitle">Email</span><input name="email" type="email" maxlength="30" className="fullWidth" /></label> 
+            <label className="col-3"><span className="labelTitle">Phone</span><input name="phone" type="number" maxLength="30" className="fullWidth" /></label> 
+            <label className="col-9"><span className="labelTitle">Email</span><input name="email" type="email" maxLength="30" className="fullWidth" /></label> 
           </div>
         </fieldset>
         <div className="inputWrapper">
-          <label for="subject" className="labelTitle" required="true">Subject*</label>
+          <label htmlFor="subject" className="labelTitle" required={true}>Subject*</label>
           <input type="text" id="subject" name="subject" className="col-12" /> 
         </div>
         <div className="inputWrapper">
-          <label for="message" className="labelTitle" required="true">Message*</label>
+          <label htmlFor="message" className="labelTitle" required={true}>Message*</label>
           <textarea type="textarea" id="message" name="message" className="col-12" /> 
         </div>
-        <div class="buttonWrapper">
+        <div className="buttonWrapper">
           <button type="reset" className="putLeft">Clear</button>
-          <button type="submit" formmethod="post" className="putRight">Submit</button>
+          <button type="submit" formMethod="post" className="putRight">Submit</button>
         </div>
       </StyledForm>
     </PageLayout>
@@ -162,18 +161,3 @@ const AboutPage = (props) => (
 
 
 export default AboutPage
-
-export const AboutImage = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      about: file(relativePath: { eq: "headshot-behind.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 800) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-  return <Img className='' fluid={data.about.childImageSharp.fluid} />
-};

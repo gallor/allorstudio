@@ -3,18 +3,18 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 import Layout from '../layouts/Layout';
-import SEO from '../components/seo'
+import Seo from '../components/seo'
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <Seo title="Home" />
     <HomePageImage />
   </Layout>
 )
 
 export default IndexPage
 
-export const HomePageImage = () => {
+const HomePageImage = () => {
   const data = useStaticQuery(graphql`
     query {
       home: file(relativePath: { eq: "headshot-in-front.jpg" }) {

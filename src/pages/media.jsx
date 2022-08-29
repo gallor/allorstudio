@@ -6,9 +6,10 @@ import Lightbox from '../components/lightbox';
 
 import Layout from "../layouts/Layout";
 import PageLayout from '../layouts/PageLayout';
-import SEO from "../components/seo"
+import Seo from "../components/seo"
+import Videos from "../components/videos";
 
-export const AllImages = () => {
+const AllImages = () => {
   const allImages = useStaticQuery(graphql`
    {
       images: allFile(filter: {extension: {regex: "/(jpg)/"}, sourceInstanceName: {eq: "images"}}) {
@@ -27,14 +28,14 @@ export const AllImages = () => {
   return <Lightbox images={allImages.images} />
 }
 
-const AboutPage = (props) => (
+const MediaPage = (props) => (
   <Layout path={props.path}>
     <PageLayout>
-    <SEO title="Media" />
+    <Seo title="Media" />
     <AllImages />
-
+    <Videos />
     </PageLayout>
   </Layout>
 )
 
-export default AboutPage
+export default MediaPage;
