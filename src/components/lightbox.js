@@ -8,10 +8,6 @@ const LightboxContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1rem;
-
-  @media screen and (max-width: 540px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
 `;
 
 const PreviewButton = styled.button`
@@ -30,8 +26,7 @@ const Button = styled.button`
   position: absolute;
   border: none;
   outline: none;
-  font-size: 3rem;
-  padding: 1.5rem;
+  padding: 0;
   cursor: pointer;
 `;
 
@@ -44,13 +39,11 @@ const CloseButton = styled(Button)`
 const PrevButton = styled(Button)`
   top: 50%;
   left: 0;
-  margin-top: -4rem;
 `;
 
 const NextButton = styled(Button)`
   top: 50%;
   right: 0;
-  margin-top: -4rem;
 `;
 
 const Lightbox = (props) => {
@@ -60,7 +53,7 @@ const Lightbox = (props) => {
  
   return (
     <Fragment>
-      <LightboxContainer>
+      <LightboxContainer className='foo'>
         {props.images.edges.map((image, index) => ( 
           <PreviewButton
             key={image.node.childImageSharp.fluid.src}
@@ -72,7 +65,7 @@ const Lightbox = (props) => {
       ))} 
       </LightboxContainer>
       {state.open && (
-        <Dialog aria-label="Headshot">
+        <Dialog aria-label="Headshot" style={{padding: '1rem'}} ref={(node) => node?.style.setProperty('width', '95vw', 'important')}>
           <Img fluid={props.images.edges[state.index].node.childImageSharp.fluid} />
           <CloseButton className="material-icons" type="button" onClick={() => setState({ open: false })}>
             cancel

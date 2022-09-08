@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Layout from "../layouts/Layout";
 import PageLayout from '../layouts/PageLayout';
 import Seo from "../components/seo"
-import AboutImage from '../components/AboutImage';
 
 const StyledForm = styled.form`
   margin-top: 2rem;
@@ -126,7 +125,6 @@ const AboutPage = (props) => (
   <Layout path={props.path}>
     <PageLayout>
       <Seo title="Contact Jennifer Allor" />
-      <AboutImage />
       <StyledForm name="contact" method="POST" data-netlify="true" action="/contact/success" netlify-honeypot="bot-field">
           <label className="hidden">Honeypot field. Do not fill in if human<input name="bot-field" /></label>
         <fieldset className="inputWrapper">

@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import styled from 'styled-components';
 import Navigation from "../components/Navigation";
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 const StyledWrapper = styled.div`
   position: relative;
@@ -30,9 +29,16 @@ const StyledSidebar = styled.div`
   bottom: 0;
   background: #000;
   padding-right: 2rem;
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 100%);
+  background: transparent;
   z-index: 1;
   min-width: 20rem;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   @media screen and (max-width: 820px) {
     display: flex;
@@ -40,7 +46,7 @@ const StyledSidebar = styled.div`
     width: 100%;
     max-width: 100%;
     padding: 0;
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 100%);
+    background: transparent;
   }
 
   @media screen and (max-width: 540px) {
@@ -87,7 +93,6 @@ const Layout = (props) => {
           <Navigation path={props.path} />
       </StyledSidebar>
       <StyledMain>{props.children}</StyledMain>
-        { !props.path && <Footer /> }
     </StyledWrapper>
   )
 }

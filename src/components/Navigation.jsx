@@ -32,7 +32,7 @@ const StyledNavigationLinksDiv = styled.nav`
     position: absolute;
     bottom: 0;
     flex-direction: column;
-    bottom: 18rem;
+    bottom: 14rem;
     opacity: 0;
     transition: opacity .1s ease-in-out;
     left: 0;
@@ -40,8 +40,8 @@ const StyledNavigationLinksDiv = styled.nav`
 
     &.open {
       background-color: white;
-      height: 18rem;
-      bottom: -16rem;
+      height: 14rem;
+      bottom: -12rem;
       opacity: 1;
       filter: drop-shadow(0px 2px 4px #6c6c6c);
     }

@@ -8,6 +8,7 @@ import Layout from "../layouts/Layout";
 import PageLayout from '../layouts/PageLayout';
 import Seo from "../components/seo"
 import Videos from "../components/videos";
+import Footer from '../components/Footer';
 
 const AllImages = () => {
   const allImages = useStaticQuery(graphql`
@@ -35,6 +36,7 @@ const MediaPage = (props) => (
     <AllImages />
     <Videos />
     </PageLayout>
+    <Footer />
   </Layout>
 )
 
