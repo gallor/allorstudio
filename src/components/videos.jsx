@@ -7,14 +7,23 @@ const VideoContainer = styled.div`
   border-top: 1px solid black;
 `;
 
+const SingleVideoFrame = styled.div`
+  position: relative;
+  padding-bottom: 56.5%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+`;
+
 const videos = [{
   url: "https://www.youtube.com/embed/qytOmvQP3JY?controls=0",
   title: 'Go Figure - Blue/Tesori'
 }];
 
 const Video = ({ videoSrcURL, videoTitle, ...props }) => (
-  <div className="video">
+  <SingleVideoFrame>
     <iframe
+      style={{height: '100%', widget: '100%', left: '0', right: '0', position: 'absolute'}}
       src={videoSrcURL}
       title={videoTitle}
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -22,10 +31,10 @@ const Video = ({ videoSrcURL, videoTitle, ...props }) => (
       webkitallowfullscreen="true"
       mozallowfullscreen="true"
       allowFullScreen
-      width="560"
-      height="315"
+      height="100%"
+      width="100%"
     />
-  </div>
+  </SingleVideoFrame>
 )
 
 const Videos = () => {
