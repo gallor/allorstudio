@@ -121,11 +121,11 @@ const StyledForm = styled.form`
   }
 `;
 
-const AboutPage = (props) => (
+const ContactPage = (props) => (
   <Layout path={props.path}>
     <PageLayout>
       <Seo title="Contact Jennifer Allor" />
-      <StyledForm name="contact" method="POST" data-netlify="true" action="/contact/success" netlify-honeypot="bot-field">
+      <StyledForm name="contact" method="POST" data-netlify="true" action="/success" netlify-honeypot="bot-field">
           <label className="hidden">Honeypot field. Do not fill in if human<input name="bot-field" /></label>
         <fieldset className="inputWrapper">
           <legend className="bold">Name*</legend>
@@ -158,4 +158,4 @@ const AboutPage = (props) => (
 )
 
 
-export default AboutPage
+export default ContactPage;
