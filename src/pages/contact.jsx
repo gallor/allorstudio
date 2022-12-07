@@ -5,7 +5,7 @@ import Layout from "../layouts/Layout";
 import PageLayout from '../layouts/PageLayout';
 import Seo from "../components/seo"
 
-const StyledForm = styled.div`
+const StyledForm = styled.form`
   margin-top: 2rem;
   font-size: 1.5rem;
   padding-bottom: 5rem;
