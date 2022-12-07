@@ -5,7 +5,7 @@ import Layout from "../layouts/Layout";
 import PageLayout from '../layouts/PageLayout';
 import Seo from "../components/seo"
 
-const StyledForm = styled.form`
+const StyledForm = styled.div`
   margin-top: 2rem;
   font-size: 1.5rem;
   padding-bottom: 5rem;
@@ -125,33 +125,35 @@ const ContactPage = (props) => (
   <Layout path={props.path}>
     <PageLayout>
       <Seo title="Contact Jennifer Allor" />
-      <StyledForm name="contact" method="POST" data-netlify="true" action="/success" netlify-honeypot="bot-field" enctype="application/x-www-form-urlencoded">
-        <label className="hidden">Honeypot field. Do not fill in if human<input name="bot-field" /></label>
-        <fieldset className="inputWrapper">
-          <legend className="bold">Name*</legend>
-          <div className="flexWrapper">
-            <label className="col-6"><span className="labelTitle">First Name</span><input name="fname" type="text" maxLength="30" className="fullWidth" required={true} /></label> 
-            <label className="col-6"><span className="labelTitle">Last Name</span><input name="lname" type="text" maxLength="30" className="fullWidth" required={true} /></label> 
+      <StyledForm>
+        <form enctype="application/x-www-form-urlencoded" name="contact" method="POST" data-netlify="true" action="/success" netlify-honeypot="bot-field">
+          <label className="hidden">Honeypot field. Do not fill in if human<input name="bot-field" /></label>
+          <fieldset className="inputWrapper">
+            <legend className="bold">Name*</legend>
+            <div className="flexWrapper">
+              <label className="col-6"><span className="labelTitle">First Name</span><input name="fname" type="text" maxLength="30" className="fullWidth" required={true} /></label> 
+              <label className="col-6"><span className="labelTitle">Last Name</span><input name="lname" type="text" maxLength="30" className="fullWidth" required={true} /></label> 
+            </div>
+          </fieldset>
+          <fieldset className="inputWrapper">
+            <div className="flexWrapper">
+              <label className="col-3"><span className="labelTitle">Phone</span><input name="phone" type="number" maxLength="30" className="fullWidth" /></label> 
+              <label className="col-9"><span className="labelTitle">Email</span><input name="email" type="email" maxLength="30" className="fullWidth" /></label> 
+            </div>
+          </fieldset>
+          <div className="inputWrapper">
+            <label htmlFor="subject" className="labelTitle" required={true}>Subject*</label>
+            <input type="text" id="subject" name="subject" className="col-12" /> 
           </div>
-        </fieldset>
-        <fieldset className="inputWrapper">
-          <div className="flexWrapper">
-            <label className="col-3"><span className="labelTitle">Phone</span><input name="phone" type="number" maxLength="30" className="fullWidth" /></label> 
-            <label className="col-9"><span className="labelTitle">Email</span><input name="email" type="email" maxLength="30" className="fullWidth" /></label> 
+          <div className="inputWrapper">
+            <label htmlFor="message" className="labelTitle" required={true}>Message*</label>
+            <textarea type="textarea" id="message" name="message" className="col-12" /> 
           </div>
-        </fieldset>
-        <div className="inputWrapper">
-          <label htmlFor="subject" className="labelTitle" required={true}>Subject*</label>
-          <input type="text" id="subject" name="subject" className="col-12" /> 
-        </div>
-        <div className="inputWrapper">
-          <label htmlFor="message" className="labelTitle" required={true}>Message*</label>
-          <textarea type="textarea" id="message" name="message" className="col-12" /> 
-        </div>
-        <div className="buttonWrapper">
-          <button type="reset" className="putLeft">Clear</button>
-          <button type="submit" formMethod="post" className="putRight">Submit</button>
-        </div>
+          <div className="buttonWrapper">
+            <button type="reset" className="putLeft">Clear</button>
+            <button type="submit" formMethod="post" className="putRight">Submit</button>
+          </div>
+        </form>
       </StyledForm>
     </PageLayout>
   </Layout>
