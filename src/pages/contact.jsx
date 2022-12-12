@@ -1,9 +1,17 @@
 import React from "react"
+import { navigate } from 'gatsby';
+
 import styled from 'styled-components';
 
 import Layout from "../layouts/Layout";
 import PageLayout from '../layouts/PageLayout';
 import Seo from "../components/seo"
+
+function encode(data) {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
 
 const StyledForm = styled.div`
   margin-top: 2rem;
@@ -121,43 +129,88 @@ const StyledForm = styled.div`
   }
 `;
 
-const ContactPage = (props) => (
-  <Layout path={props.path}>
-    <PageLayout>
-      <Seo title="Contact Jennifer Allor" />
-      <StyledForm>
-        <form enctype="application/x-www-form-urlencoded" name="contact" method="POST" data-netlify="true" action="/success" netlify-honeypot="bot-field">
-          <label className="hidden">Honeypot field. Do not fill in if human<input name="bot-field" /></label>
-          <fieldset className="inputWrapper">
-            <legend className="bold">Name*</legend>
-            <div className="flexWrapper">
-              <label className="col-6"><span className="labelTitle">First Name</span><input name="fname" type="text" maxLength="30" className="fullWidth" required={true} /></label> 
-              <label className="col-6"><span className="labelTitle">Last Name</span><input name="lname" type="text" maxLength="30" className="fullWidth" required={true} /></label> 
-            </div>
-          </fieldset>
-          <fieldset className="inputWrapper">
-            <div className="flexWrapper">
-              <label className="col-3"><span className="labelTitle">Phone</span><input name="phone" type="number" maxLength="30" className="fullWidth" /></label> 
-              <label className="col-9"><span className="labelTitle">Email</span><input name="email" type="email" maxLength="30" className="fullWidth" /></label> 
-            </div>
-          </fieldset>
-          <div className="inputWrapper">
-            <label htmlFor="subject" className="labelTitle" required={true}>Subject*</label>
-            <input type="text" id="subject" name="subject" className="col-12" /> 
-          </div>
-          <div className="inputWrapper">
-            <label htmlFor="message" className="labelTitle" required={true}>Message*</label>
-            <textarea type="textarea" id="message" name="message" className="col-12" /> 
-          </div>
-          <div className="buttonWrapper">
-            <button type="reset" className="putLeft">Clear</button>
-            <button type="submit" formMethod="post" className="putRight">Submit</button>
-          </div>
-        </form>
-      </StyledForm>
-    </PageLayout>
-  </Layout>
-)
+export default function ContactPage(props) {
+  const [state, setState] = React.useState({});
 
+  const handleChange = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value })
+  }
 
-export default ContactPage;
+  const reset = () => {
+    setState({})
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const form = e.target
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        ...state,
+      }),
+    })
+      .then(() => navigate(form.getAttribute('action')))
+      .catch((e) => navigate("/error"))
+  }
+
+  return (
+    <Layout path={props.path}>
+      <PageLayout>
+        <Seo title="Contact Jennifer Allor" />
+        <StyledForm>
+          <form
+            enctype="application/x-www-form-urlencoded"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            action="/success"
+            netlify-honeypot="bot-field"
+            onSubmit={handleSubmit}
+          >
+            <label className="hidden">Honeypot field. Do not fill in if human<input name="bot-field" onChange={handleChange} /></label>
+            <input type="hidden" name="form-name" value="contact" />
+            <fieldset className="inputWrapper">
+              <legend className="bold">Name*</legend>
+              <div className="flexWrapper">
+                <label className="col-6">
+                  <span className="labelTitle">First Name</span>
+                  <input name="fname" type="text" maxLength="30" className="fullWidth" required={true} onChange={handleChange} />
+                </label>
+                <label className="col-6">
+                  <span className="labelTitle">Last Name</span>
+                  <input name="lname" type="text" maxLength="30" className="fullWidth" required={true} onChange={handleChange} />
+                </label>
+              </div>
+            </fieldset>
+            <fieldset className="inputWrapper">
+              <div className="flexWrapper">
+                <label className="col-3">
+                  <span className="labelTitle">Phone</span>
+                  <input name="phone" type="tel" maxLength="30" className="fullWidth" onChange={handleChange} />
+                </label>
+                <label className="col-9">
+                  <span className="labelTitle">Email</span>
+                  <input name="email" type="email" className="fullWidth" onChange={handleChange} />
+                </label>
+              </div>
+            </fieldset>
+            <div className="inputWrapper">
+              <label htmlFor="subject" className="labelTitle" required={true} >Subject*</label>
+              <input type="text" id="subject" name="subject" className="col-12" onChange={handleChange} />
+            </div>
+            <div className="inputWrapper">
+              <label htmlFor="message" className="labelTitle" required={true}>Message*</label>
+              <textarea type="textarea" id="message" name="message" className="col-12" onChange={handleChange} />
+            </div>
+            <div className="buttonWrapper">
+              <button type="reset" className="putLeft" onClick={reset}>Clear</button>
+              <button type="submit" className="putRight">Submit</button>
+            </div>
+          </form>
+        </StyledForm>
+      </PageLayout>
+    </Layout>
+  )
+}
