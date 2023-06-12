@@ -16,14 +16,15 @@ const SingleVideoFrame = styled.div`
 `;
 
 const videos = [{
-  url: "https://www.youtube.com/embed/qytOmvQP3JY?controls=0",
-  title: 'Go Figure - Blue/Tesori'
+
+  url: "https://www.youtube.com/embed/6C9BhmJCYJU?controls=0",
+  title: "Kendra's Aria from The Cookoff by Shawn Okpebholo"
 }];
 
 const Video = ({ videoSrcURL, videoTitle, ...props }) => (
   <SingleVideoFrame>
     <iframe
-      style={{height: '100%', widget: '100%', left: '0', right: '0', position: 'absolute'}}
+      style={{ height: '100%', widget: '100%', left: '0', right: '0', position: 'absolute' }}
       src={videoSrcURL}
       title={videoTitle}
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -40,9 +41,9 @@ const Video = ({ videoSrcURL, videoTitle, ...props }) => (
 const Videos = () => {
   return (
     <VideoContainer>
-    {videos.map((video, idx) => (
-      <Video videoSrcURL={video.url} videoTitle={video.title} key={idx} />
-    ))}
+      {videos.map((video, idx) => (
+        <Video videoSrcURL={video.url} videoTitle={video.title} key={idx} />
+      ))}
     </VideoContainer>
   );
 }
