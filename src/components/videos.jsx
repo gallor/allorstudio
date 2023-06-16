@@ -15,11 +15,16 @@ const SingleVideoFrame = styled.div`
   overflow: hidden;
 `;
 
-const videos = [{
-
-  url: "https://www.youtube.com/embed/6C9BhmJCYJU?controls=0",
-  title: "Kendra's Aria from The Cookoff by Shawn Okpebholo"
-}];
+const videos = [
+  {
+    url: "https://www.youtube.com/embed/OO6PaeGyCQU?controls=0",
+    title: "Recondita armonia from Tosca by Puccini"
+  },
+  {
+    url: "https://www.youtube.com/embed/6C9BhmJCYJU?controls=0",
+    title: "Kendra's Aria from The Cookoff by Shawn Okpebholo"
+  }
+];
 
 const Video = ({ videoSrcURL, videoTitle, ...props }) => (
   <SingleVideoFrame>
